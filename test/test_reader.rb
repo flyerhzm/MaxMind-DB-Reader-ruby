@@ -397,8 +397,8 @@ class ReaderTest < Minitest::Test
         node_bytes: "\xab\xcd\xef".b + "\xbc\xfe\xfa".b,
         left: 11_259_375,
         right: 12_386_042,
-        check_left: "\x00\xab\xcd\xef".b.unpack1('N'),
-        check_right: "\x00\xbc\xfe\xfa".b.unpack1('N'),
+        check_left: "\x00\xab\xcd\xef".b.unpack('N').first,
+        check_right: "\x00\xbc\xfe\xfa".b.unpack('N').first,
       },
       {
         record_size: 28,
@@ -406,8 +406,8 @@ class ReaderTest < Minitest::Test
         node_bytes: "\xab\xcd\xef".b + "\x12".b + "\xfd\xdc\xfa".b,
         left: 28_036_591,
         right: 50_191_610,
-        check_left: "\x01\xab\xcd\xef".b.unpack1('N'),
-        check_right: "\x02\xfd\xdc\xfa".b.unpack1('N'),
+        check_left: "\x01\xab\xcd\xef".b.unpack('N').first,
+        check_right: "\x02\xfd\xdc\xfa".b.unpack('N').first,
       },
       {
         record_size: 32,
@@ -415,8 +415,8 @@ class ReaderTest < Minitest::Test
         node_bytes: "\xab\xcd\xef\x12".b + "\xfd\xdc\xfa\x15".b,
         left: 2_882_400_018,
         right: 4_259_117_589,
-        check_left: "\xab\xcd\xef\x12".b.unpack1('N'),
-        check_right: "\xfd\xdc\xfa\x15".b.unpack1('N'),
+        check_left: "\xab\xcd\xef\x12".b.unpack('N').first,
+        check_right: "\xfd\xdc\xfa\x15".b.unpack('N').first,
       },
     ]
 
